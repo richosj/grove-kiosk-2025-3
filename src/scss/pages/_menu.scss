@@ -1,0 +1,86 @@
+
+
+#nav{
+  position: absolute;
+  z-index: 1000;
+  left: 35px;
+  height: calc(100% - 322px);
+  background-color: rgba(0,0,0,.6);
+  width: calc(2160px - 35px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+  &.show{
+    opacity: 1;
+    visibility: visible;
+  }
+  
+}
+.menu-container {
+  position: relative;
+  width: 1874px;
+  height: 1874px;
+  transform-origin: center;
+  touch-action: none;
+  margin-top: 200px;
+}
+
+.wheel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: url(/assets/images/menu.png) no-repeat 0 0;
+  touch-action: none;
+
+}
+
+.home-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 345px;
+  height: 345px;
+  //background: url(/assets/images/home.png) no-repeat 50% 50%;
+  border-radius: 50%;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.menu-item {
+  position: absolute;
+  width: 272px;
+  height: 280px;
+  transform-origin: center center;
+  pointer-events: none;
+  cursor: pointer;
+  background-color: #000;
+  img{
+    pointer-events: none; /* 클릭 이벤트 안 잡게 */
+  }
+}
+.menu-item-1{left: 851px;top: 156px;}
+.menu-item-2{left: 1360px;top: 540px;}
+.menu-item-3{left: 1360px;top: 1100px;}
+.menu-item-4{left: 851px;top: 1480px;}
+.menu-item-5{left: 315px;top: 1100px;}
+.menu-item-6{left: 315px;top: 540px;}
+
+
+.item-inner {
+  width: 100%;
+  height: 100%;
+  transform-origin: center;
+  transition: transform 0.3s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto;
+}

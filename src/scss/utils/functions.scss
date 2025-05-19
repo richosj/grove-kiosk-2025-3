@@ -1,0 +1,8 @@
+@use 'sass:map';
+@use 'sass:math';
+@use 'variables' as *;
+
+@function to-percent($px) {
+    @return math.div($px, $design-width) * 100%;
+}
+  

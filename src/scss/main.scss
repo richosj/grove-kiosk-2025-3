@@ -1,0 +1,11 @@
+// utils 먼저 로드 (변수, 믹스인, 함수)
+@use 'utils/functions';
+@use 'utils/mixins';
+@use 'utils/variables';
+
+// base 스타일 (reset 등)
+@use 'base/reset';
+
+// layout, components, pages → 전부 index로 forward한 구조니까 단일 import
+@use 'pages';
+

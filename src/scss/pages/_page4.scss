@@ -1,0 +1,81 @@
+
+.page-4{
+    .item2,
+    .item3,
+    .item4{
+        position: relative;
+    }
+    button{
+        position: absolute;
+        width: 200px;
+        height: 200px;
+    }
+    
+    .btn1{
+        top: 0;
+        left: 205px;
+        width: 613px;
+        height: 750px;
+    }
+    .btn2{
+        left: 840px;
+        top: 113px;
+        width: 604px;
+        height: 615px;
+    }
+    .btn3{
+        right: 109px;
+        top: 113px;
+        width: 604px;
+        height: 615px;
+    }
+    .btn4{
+        top: 100px;
+        width: 604px;
+        height: 549px;
+        left: 205px;
+    }
+    .btn5{
+        top: 100px;
+        width: 604px;
+        height: 549px;
+        left: 840px;
+    }
+    .btn6{
+        top: 100px;
+        width: 604px;
+        height: 549px;
+        right: 109px;
+    }
+
+    .btn7{
+        top: 100px;
+        left: 205px;
+        width: 604px;
+        height: 549px;
+    }
+    .btn8{
+        top: 100px;
+        left: 840px;
+        width: 604px;
+        height: 549px;
+    }
+    .btn9{
+        top: 100px;
+        right: 109px;
+        width: 604px;
+        height: 549px;
+    }
+    .btn10{
+        top: 649px;
+        left: 205px;
+        height: 435px;
+        width: 934px;
+    }
+    .btn11{
+        top: 649px;
+        right: 109px;
+        width: 934px;
+        height: 435px;
+    }
+}

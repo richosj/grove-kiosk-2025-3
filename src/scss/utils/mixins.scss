@@ -1,0 +1,27 @@
+@use 'sass:map';
+@use 'sass:math';
+@use 'functions' as *;
+@use 'variables' as *;
+
+
+@mixin fluid-px($property, $px) {
+  // 모바일 기준 - 퍼센트로 처리
+  #{$property}: to-percent($px);
+
+  // 태블릿 이상 - px 고정
+  @media (min-width: #{$design-width}px) {
+    #{$property}: #{$px}px;
+  }
+}
+
+
+@mixin visually-hidden {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

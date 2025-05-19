@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=2160, height=3840, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <title>The 1st Omlyclo</title>
+    
+</head>
+
+<body>
+    {{> nav}}
+    <div class="kiosk">
+        <div class="kiosk-header"></div>
+        <div class="left" aria-label="좌측 메뉴">
+            <div>
+                <div><button type="button" id="menuButton"></button></div>
+            </div>
+        </div>
+
+        <div class="popup" id="popup1">
+            <div class="popup-content">
+                <div class="popup-body">
+                    <img src="/assets/page1/popup.png" alt="">
+                    <button class="close"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="popup" id="popup2">
+            <div class="popup-content">
+                <div class="popup-body">
+                    <img src="/assets/page7/popup.png" alt="">
+                    <button class="close"></button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="overlay"></div>
+        <div class="imgpop">
+            <div class="popup-content">
+                <img id="popup-img">
+                <button class="closes"></button>
+            </div>
+        </div>
+        
+
+        <div id="contents">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" aria-label="1 페이지">
+                    {{> page1}}
+                </div>
+                <div class="swiper-slide" aria-label="2 페이지">
+                    {{> page2}}
+                </div>
+                <div class="swiper-slide" aria-label="3 페이지">
+                    {{> page3}}
+                </div>
+                <div class="swiper-slide" aria-label="4 페이지">
+                    {{> page4}}
+                </div>
+                <div class="swiper-slide" aria-label="5 페이지">
+                    {{> page5}}
+                </div>
+                <div class="swiper-slide" aria-label="6 페이지">
+                    {{> page6}}
+                </div>
+                <div class="swiper-slide" aria-label="7 페이지">
+                    {{> page7}}
+                </div>
+
+            </div>
+            <!-- <div class="swiper-pagination"></div> -->
+            </div>
+        </div>
+
+        <div class="kiosk-footer">
+            <img src="/assets/images/footer.png">
+        </div>
+    </div>
+
+    <script src="/js/main.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menuButton');
+            const nav = document.getElementById('nav');
+            
+            const swiper = new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            pagination: { el: '.swiper-pagination', clickable: true },
+            initialSlide: 6,
+            on: {
+                init() {
+                    setTimeout(function(){
+                        document.querySelector('.intro').classList.add('init')
+                    },1000)
+                    
+                },
+                slideChange() {
+                    menuButton.classList.remove('on');
+                    nav.classList.remove('show');
+                }
+            }
+            });
+            document.querySelector('.menu-item-1')?.addEventListener('click', () => {
+                // Item 1 동작
+                swiper.slideTo(2)
+            });
+
+            document.querySelector('.page-1-click')?.addEventListener('click', () => {
+                document.querySelector('#popup1').classList.add('show');
+            })
+
+            document.querySelectorAll('.close')?.forEach((close) => {
+                close.addEventListener('click', () => {
+                    close.closest('.popup').classList.remove('show');
+                    //document.querySelector('#popup1').classList.remove('show');
+                })
+            })
+            
+            document.querySelectorAll('.closes')?.forEach((close) => {
+                close.addEventListener('click', () => {
+                    close.closest('.imgpop').classList.remove('show');
+                    overlay.classList.remove('show');
+                })
+            })
+            
+            menuButton.addEventListener('click', () => {
+                menuButton.classList.toggle('on');
+                nav.classList.toggle('show');
+            });
+
+            const buttons = document.querySelectorAll('button[data-img]');
+            const overlay = document.querySelector('.overlay');
+            
+            buttons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    const img = button.getAttribute('data-img');
+                    document.querySelector('.imgpop').classList.add('show');
+                    overlay.classList.add('show');
+                    document.querySelector('#popup-img').src = `/assets/page4/p_img_${img}.png`;
+                })
+            })
+
+            overlay.addEventListener('click', () => {
+                overlay.classList.remove('show');
+                document.querySelector('.imgpop').classList.remove('show');
+            })
+
+            document.getElementById('page7-hand')?.addEventListener('click', () => {
+                document.querySelector('#popup2').classList.add('show');
+            })
+            
+        });
+
+    </script>
+</body>
+
+</html>

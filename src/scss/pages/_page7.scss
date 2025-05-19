@@ -1,0 +1,33 @@
+@keyframes flash2 {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+
+.page-7{
+    background-color: #fff;
+    .c{
+        position: absolute;
+        left: 750px;
+        top: 1010px;
+        z-index: 1;
+    }
+    .item1,
+    .item2,
+    .item3{
+        position: relative;
+        z-index: 2;
+    }
+    .hand{
+        position: absolute;
+        z-index: 3;
+        left: 1800px;
+        top: 700px;    
+        animation: flash2 0.8s ease-in-out infinite;
+    }
+    
+}
