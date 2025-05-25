@@ -1,0 +1,414 @@
+@use 'sass:map';
+@use 'sass:math';
+
+@use '../utils/variables' as *;
+@use '../utils/functions' as *;
+@use '../utils/mixins' as *;
+
+$top: 28px;
+$left: 35px;
+$bottom: 322px;
+
+$w : $width;
+$h : calc($height - $top - $bottom);
+
+.sticky-button{
+    position: absolute;
+    z-index: 999;
+    top: 1499px;
+    left: $left;
+    
+    .wrpas{
+        position: relative;
+        a,
+        button{
+            display: block;
+            position: absolute;
+            //background: #000;
+            width: 222px;
+            left: 0;
+            //top: 0;left: 0;
+        }
+        a{z-index: 1;top: 0;height: 300px;}
+        button{z-index: 2;top: 273px;height: 300px;}
+    }
+    .nav-open{
+        background: url(#{$image-path}/celltrion/open.png) no-repeat 50% 50%;
+        transition: all 0.5s ease-in-out;
+        &.on{
+            background-image: url(#{$image-path}/celltrion/close.png);
+        }
+    }
+
+}
+
+#celltrion-kiosk{
+    position: relative;width: 100%;height: 100%;overflow: hidden;
+    background: #000;
+    background: url(#{$image-path}/celltrion/layer.png) no-repeat 0 0;
+    padding: $top 0 $bottom 0;
+    #contents{
+        overflow: hidden;
+        width: $w;height: $h;
+    }
+    .annotation{
+        position: absolute;
+        z-index: 2;
+        bottom: 62px;
+        left: 92px;
+        font-size: 15px;
+        color: #848889;
+    }
+
+    .page{
+        width: $w;height: $h;
+    }
+    .page1{
+        position: relative;
+        //padding-left: $left;
+        padding-top: 700px;
+        .text-1,.text-2,.text-3,.text-4,.text-5{
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 1s ease-in-out;
+        }
+        .text-6{
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            //transform: translateY(100px);
+            transition: all 1s ease-in-out;
+        }
+        .open-popup{
+            position: absolute;
+            top: 0;
+            left: 720px;
+            z-index: 2;
+            width: 650px;
+            height: 130px;
+        }
+        .hand{
+            position: absolute;
+            top: 100px;left: 1200px;
+            z-index: 2;
+            
+            .tev_home_hand_box {
+                width: 66px;
+                height: 80px;
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                align-items: flex-start;
+                position: absolute;
+                top:65%;
+                left:65%;
+            }
+            .tev_home_hand_box_first {
+                //background: center center/cover url(../img/home_icon_01.svg) no-repeat;
+                flex: 100% 0 0;
+                height: 100%;
+                position: relative;
+                z-index: 3;
+                animation: linear click_ani_03 2s infinite;
+                -webkit-animation: linear click_ani_03 3s infinite;
+            }
+            .tev_home_hand_box_second {
+                //background: center center/cover url(../img/home_icon_02.svg) no-repeat;
+                transform: translate(-105%, -40px);
+                flex: 100% 0 0;
+                height: 100%;
+                position: relative;
+                z-index: 2;
+                animation: linear click_ani_02 3s infinite;
+                -webkit-animation: linear click_ani_02 3s infinite;
+            }
+            .tev_home_hand_box_third {
+                transform: translateX(-390%);
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                padding-bottom: 60px;
+                flex: 100% 0 0;
+                height: 100%;
+                position: relative;
+                z-index: 1;
+            }
+            
+            .tev_home_hand_box_third .circle {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background-color: #00a869;
+                animation: linear click_ani_01 3s infinite;
+                -webkit-animation: linear click_ani_01 3s infinite;
+            }
+  
+        }
+        .background{
+            position: absolute;
+            top: 0;left: $left;
+        }
+        &.active{
+            @for $i from 1 through 6 {
+                .text-#{$i} {
+                    opacity: 1;
+                    transform: translateY(0);
+                    transition-delay: ($i - 1) * 0.15s;
+                }
+            }
+        }
+    }
+    
+
+    .page2{
+        .boxgroup{
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            padding-left: 151px;
+            .box{
+                position: relative;
+                opacity: 0;
+                transform: scale(0.95);
+                transition: all 1s cubic-bezier(0.33, 1, 0.68, 1),
+            }
+        }
+
+        &.active{
+            .boxgroup{
+                @for $i from 1 through 15 {
+                @if $i % 2 == 1 {
+                    .box#{$i} {
+                    opacity: 1;
+                    transform: scale(1);
+                    transition-delay: 0s;
+                    }
+                }
+                }
+                // 짝수 그룹
+                @for $i from 2 through 14 {
+                @if $i % 2 == 0 {
+                    .box#{$i} {
+                    opacity: 1;
+                    transform: translateY(0);
+                    transition-delay: 0.15s;
+                    }
+                }
+                }
+            }
+        }
+    }
+
+    .page3{
+        .year-box{
+            position: relative;
+            .img-box{
+                position: absolute;
+                top: 0;left: 0;
+                .img{
+                    position: relative;
+                    opacity: 0;
+                    transform: translateY(0) scale(0.95);
+                    transition: all 1.5s cubic-bezier(0.33, 1, 0.68, 1),
+                }
+            }
+            .c{
+                position: absolute;
+                top: 100px;right: 0;
+                transform: translateX(50%);
+            }
+        }
+        .annotation{color: #45b035;font-size: 26px;}
+        &.active{
+            .year-box{
+                .img-box{
+                    @for $i from 1 through 4 {
+                        .img-#{$i} {
+                            opacity: 1;
+                            transform: translateY(0) scale(1);
+                            transition-delay: ($i - 1) * 0.35s;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .page4{
+        .img1,
+        .img2{
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 1s cubic-bezier(0.33, 1, 0.68, 1);
+            position: relative;
+        }
+        .img3{
+            animation: growShrink 1.2s infinite alternate ease-in-out;
+        }
+        .img-box{
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 1s cubic-bezier(0.33, 1, 0.68, 1);
+            position: absolute;
+        }
+        .img-box1{
+            top: 103px;left: 208px;
+        }
+        .img-box2{
+            top: 103px;left: 1138px;
+        }
+        .img-box3{
+            top: 637px;left: 208px;
+        }
+        .img-box4{
+            top: 637px;left: 1138px;
+        }
+
+        &.active{
+            .img1,
+            .img2{
+                opacity: 1;
+                transform: scale(1);
+            }
+            .img2{
+                transition-delay: 0.35s;
+            }
+            @for $i from 1 through 4 {
+                .img-box#{$i} {
+                    opacity: 1;
+                    transform: scale(1);
+                    transition-delay: ($i - 1) * 0.45s;
+                }
+            }
+        }
+    }
+
+    .page5{
+        .fadeUp{
+            position: relative;
+            .line{
+                //position: absolute;
+                padding-top: 250px;
+                padding-left: 315px;
+            }
+            .test{
+                position: absolute;
+                top: 0;left: 0;
+            }
+            .unit{
+                position: absolute;
+                opacity: 0;
+                transform: scale(0.95);
+                transition: all 1s cubic-bezier(0.33, 1, 0.68, 1);
+
+                &-1,
+                &-3,
+                &-5{
+                    left: 308px;
+                }
+                &-2,
+                &-4,
+                &-6{
+                    left: 1029px;
+                }
+                &-1{top: 0;}
+                &-2{top: 36px;}
+                &-3{top: 564px;}
+                &-4{top: 701px;}
+                &-5{top: 1193px;}
+                &-6{top: 1195px;}
+            }
+        }
+        &.active{
+            .fadeUp{
+                    @for $i from 1 through 6 {
+                        .unit-#{$i} {
+                            opacity: 1;
+                            transform: scale(1);
+                            transition-delay: ($i - 1) * 0.25s;
+                        }
+                    }
+                
+            }
+        }
+    }
+    .page6{
+        .p1, .p2 {
+            opacity: 1;
+            transform: scale(1);
+            transition: transform 1.5s cubic-bezier(0.33, 1, 0.68, 1),
+                        opacity 0.5s ease;
+          }
+          
+          /* 강조 애니메이션 키프레임 */
+          @keyframes emphasize {
+            0% {
+              transform: scale(1);
+            }
+            50% {
+              transform: scale(1.1);
+            }
+            100% {
+              transform: scale(1);
+            }
+          }
+          
+          /* 강조 클래스 */
+          .emphasize {
+            animation: emphasize 1.5s cubic-bezier(0.33, 1, 0.68, 1);
+          }
+          
+          /* 비활성화된 애는 살짝 투명 */
+          .inactive {
+            opacity: 0.3;
+          }
+
+          
+        .area{
+            position: relative;
+            .p1{
+                position: absolute;
+                top: 140px;left: 290px;
+            }
+            .p2{
+                position: absolute;
+                top: 327px;left: 440px;
+            }
+            .area-btn-1,
+            .area-btn-2{
+                position: absolute;
+                width: 488px;
+                height: 73px;
+                //background: #000;
+                left: 1548px;z-index: 2;
+            }
+            .area-btn-1{
+                top: 32px;
+            }
+            .area-btn-2{
+                top: 123px;
+            }
+        }
+    }
+
+    .page7{
+        .box1{
+            position: relative;
+            .item{
+                //opacity: 0;transition: opacity 1s;
+            }
+            .item1{
+                position: relative;
+            }
+            .item2{
+                position: absolute;
+                z-index: 2;
+                top: 600px;
+                left: 260px;
+                animation: growShrink 1.2s infinite alternate ease-in-out;
+            }
+        }
+    }
+}

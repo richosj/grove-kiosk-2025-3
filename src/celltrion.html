@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=2160, height=3840, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <title>CELLTRION</title>
+    
+</head>
+
+<body>
+    
+    <div class="kiosk" id="celltrion-kiosk">
+        {{> nav}}
+        <div class="sticky-button">
+            <div class="wrpas">
+                <img src="./assets/celltrion/click.png" alt="">
+                <a href="./index.html" aria-label="홈으로"></a>
+                <button class="nav-open" aria-label="메뉴 열기"></button>
+            </div>
+        </div>
+        <div class="popup" id="popup1">
+            <div class="popup-content">
+                <img src="./assets/celltrion/01/popup.png" alt="">
+                <button class="close"></button>
+            </div>
+            <div class="overlay"></div>
+        </div>
+        <div class="popup" id="popup7">
+            <div class="popup-content">
+                <img src="./assets/celltrion/07/popup.png" alt="">
+                <button class="close"></button>
+            </div>
+            <div class="overlay"></div>
+        </div>
+
+        <div class="popup" id="barcode1">
+            <div class="popup-content">
+                <img src="./assets/celltrion/04/1.png" alt="">
+                <button class="close"></button>
+            </div>
+            <div class="overlay"></div>
+        </div>
+        <div class="popup" id="barcode2">
+            <div class="popup-content">
+                <img src="./assets/celltrion/04/2.png" alt="">
+                <button class="close"></button>
+            </div>
+            <div class="overlay"></div>
+        </div>
+        <div class="popup" id="barcode3">
+            <div class="popup-content">
+                <img src="./assets/celltrion/04/3.png" alt="">
+                <button class="close"></button>
+            </div>
+            <div class="overlay"></div>
+        </div>
+        <div class="popup" id="barcode4">
+            <div class="popup-content">
+                <img src="./assets/celltrion/04/4.png" alt="">
+                <button class="close"></button>
+            </div>
+            <div class="overlay"></div>
+        </div>
+        <div class="popup" id="barcode5">
+            <div class="popup-content">
+                <img src="./assets/celltrion/04/5.png" alt="">
+                <button class="close"></button>
+            </div>
+            <div class="overlay"></div>
+        </div>
+    
+        <div id="contents">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" aria-label="1 페이지">
+                        {{> celltrion-page1}}
+                    </div>
+                    <div class="swiper-slide" aria-label="2 페이지">
+                        {{> celltrion-page2}}
+                    </div>
+                    <div class="swiper-slide" aria-label="3 페이지">
+                        {{> celltrion-page3}}
+                    </div>
+                    <div class="swiper-slide" aria-label="4 페이지">
+                        {{> celltrion-page4}}
+                    </div>
+                    <div class="swiper-slide" aria-label="5 페이지">
+                        {{> celltrion-page5}}
+                    </div>
+                    <div class="swiper-slide" aria-label="6 페이지">
+                        {{> celltrion-page6}}
+                    </div>
+                    <div class="swiper-slide" aria-label="7 페이지">
+                        {{> celltrion-page7}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/main.js" type="module"></script>
+    <script src="/js/swiper-bundle.min.js"></script>
+    <script>
+        const navopen = document.querySelector('.nav-open');
+        const nav = document.querySelector('.nav');
+
+        const swiper = new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            pagination: { el: '.swiper-pagination', clickable: true },
+            //initialSlide: 2,
+            on: {
+                init() {
+                    updatePageActive()
+                },
+                slideChange() {
+                    navopen.classList.remove('on');
+                    nav.classList.remove('show');
+                    setTimeout(updatePageActive, 50);
+                }
+            }
+        });
+
+        function updatePageActive() {
+        document.querySelectorAll('.swiper-slide').forEach((slide) => {
+            const page = slide.querySelector('.page');
+            if (!page) return;
+
+            if (slide.classList.contains('swiper-slide-active')) {
+            page.classList.add('active');
+            } else {
+            page.classList.remove('active');
+            }
+        });
+        }
+
+
+
+        
+        navopen.addEventListener('click', (e) => {
+            e.preventDefault();
+            nav.classList.toggle('show');
+            navopen.classList.toggle('on');
+        });
+
+        const popup = document.querySelector('.popup');
+        const popupContent = document.querySelector('.popup-content');
+        const overlay = document.querySelectorAll('.overlay');
+        const callPopup = document.querySelectorAll('.open-popup');
+        const close = document.querySelectorAll('.close');
+
+
+        callPopup.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const popupId = item.getAttribute('data-popup');
+                const popup = document.getElementById(popupId);
+                popup.classList.add('show');
+            });
+        });
+
+        overlay.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const popup = item.closest('.popup');
+                popup.classList.remove('show');
+            });
+        });
+        
+        close.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const popup = item.closest('.popup');
+                popup.classList.remove('show');
+            });
+        });
+
+        document.querySelector('.home-button')?.addEventListener('click', () => {
+            swiper.slideTo(0)
+        });
+
+        document.querySelector('.menu-item-1')?.addEventListener('click', () => {
+            swiper.slideTo(1)
+        });
+        document.querySelector('.menu-item-2')?.addEventListener('click', () => {
+            swiper.slideTo(2)
+        });
+        document.querySelector('.menu-item-3')?.addEventListener('click', () => {
+            swiper.slideTo(3)
+        });
+        document.querySelector('.menu-item-4')?.addEventListener('click', () => {
+            swiper.slideTo(4)
+        });
+        document.querySelector('.menu-item-5')?.addEventListener('click', () => {
+            swiper.slideTo(5)
+        });
+        document.querySelector('.menu-item-6')?.addEventListener('click', () => {
+            swiper.slideTo(6)
+        });
+        document.querySelector('.menu-item-7')?.addEventListener('click', () => {
+            swiper.slideTo(7)
+        });
+    </script>
+</body>
+
+</html>

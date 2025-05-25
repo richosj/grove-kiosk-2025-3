@@ -2,7 +2,7 @@
 
 #nav{
   position: absolute;
-  z-index: 1000;
+  z-index: 998;
   left: 35px;
   height: calc(100% - 322px);
   background-color: rgba(0,0,0,.6);
@@ -58,20 +58,29 @@
   position: absolute;
   width: 272px;
   height: 280px;
-  transform-origin: center center;
-  pointer-events: none;
   cursor: pointer;
-  background-color: #000;
-  img{
-    pointer-events: none; /* 클릭 이벤트 안 잡게 */
-  }
+  //background-color: #000;
 }
-.menu-item-1{left: 851px;top: 156px;}
-.menu-item-2{left: 1360px;top: 540px;}
-.menu-item-3{left: 1360px;top: 1100px;}
-.menu-item-4{left: 851px;top: 1480px;}
-.menu-item-5{left: 315px;top: 1100px;}
-.menu-item-6{left: 315px;top: 540px;}
+.menu-item-1{
+  left: 731px;
+  top: 126px;
+  width: 472px;
+}
+.menu-item-2{
+  left: 1230px;
+  top: 493px;
+  width: 430px;
+}
+.menu-item-3{
+  left: 1160px;
+    top: 1052px;
+  width: 572px;
+  height: 330px;
+}
+.menu-item-4{    left: 756px;
+  top: 1433px;    width: 382px;}
+.menu-item-5{left: 180px;top: 1052px;width: 472px;}
+.menu-item-6{left: 180px;top: 493px;width:472px}
 
 
 .item-inner {
