@@ -331,7 +331,7 @@ img {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: url(../../assets/images/menu.png) no-repeat 0 0;
+  background: url(../../assets//celltrion/menu.png) no-repeat 0 0;
   touch-action: none;
 }
 
@@ -404,10 +404,58 @@ img {
   pointer-events: auto;
 }
 
+body:has(.swiper-slide1.swiper-slide-active) .edge,
+body:has(.swiper-slide1.swiper-slide-active) #contents::before,
+body:has(.swiper-slide1.swiper-slide-active) #contents::after {
+  opacity: 0;
+  transition-duration: 0s;
+}
+
+.edge,
+#contents::before,
+#contents::after {
+  transition: all 0.25s;
+  opacity: 1;
+}
+
+.edge {
+  position: absolute;
+  background-color: #45B035;
+  width: 2px;
+  z-index: 500;
+  left: 63px;
+  top: 58px;
+  height: 3430px;
+}
+
+#contents::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 28px;
+  width: 63px;
+  height: 3489px;
+  left: 0;
+  background: linear-gradient(to right, #45B035 50%, white 50%);
+  z-index: 500;
+}
+
+#contents::after {
+  content: "";
+  display: block;
+  position: absolute;
+  background: #fff;
+  top: 28px;
+  z-index: 500;
+  right: 0;
+  height: 3490px;
+  width: 34px;
+}
+
 .sticky-button {
   position: absolute;
   z-index: 999;
-  top: 1499px;
+  top: 1505px;
   left: 35px;
 }
 .sticky-button .wrpas {
@@ -492,7 +540,7 @@ img {
 #celltrion-kiosk .page1 .hand {
   position: absolute;
   top: 100px;
-  left: 1200px;
+  left: 1000px;
   z-index: 2;
 }
 #celltrion-kiosk .page1 .hand .tev_home_hand_box {
@@ -587,7 +635,7 @@ img {
   position: relative;
   opacity: 0;
   transform: scale(0.95);
-  transition: all 1s cubic-bezier(0.33, 1, 0.68, 1);
+  transition: all 1s cubic-bezier(0.12, 0, 0.39, 0);
 }
 #celltrion-kiosk .page2.active .boxgroup .box1 {
   opacity: 1;
@@ -664,6 +712,9 @@ img {
   transform: translateY(0);
   transition-delay: 0.15s;
 }
+#celltrion-kiosk .page3 {
+  overflow: hidden;
+}
 #celltrion-kiosk .page3 .year-box {
   position: relative;
 }
@@ -707,6 +758,10 @@ img {
   opacity: 1;
   transform: translateY(0) scale(1);
   transition-delay: 1.05s;
+}
+#celltrion-kiosk .page4 {
+  overflow: hidden;
+  position: relative;
 }
 #celltrion-kiosk .page4 .img1,
 #celltrion-kiosk .page4 .img2 {
@@ -767,6 +822,17 @@ img {
   opacity: 1;
   transform: scale(1);
   transition-delay: 1.35s;
+}
+#celltrion-kiosk .page5 {
+  position: relative;
+  overflow: hidden;
+}
+#celltrion-kiosk .page5 .c {
+  position: absolute;
+  bottom: -110px;
+  right: 0;
+  transform: translateX(50%);
+  z-index: -1;
 }
 #celltrion-kiosk .page5 .fadeUp {
   position: relative;
@@ -841,31 +907,46 @@ img {
   transition-delay: 1.25s;
 }
 #celltrion-kiosk .page6 {
-  /* 강조 애니메이션 키프레임 */
-  /* 강조 클래스 */
-  /* 비활성화된 애는 살짝 투명 */
+  overflow: hidden;
+  position: relative;
+}
+#celltrion-kiosk .page6 .c {
+  position: absolute;
+  bottom: -110px;
+  right: 0;
+  transform: translateX(50%);
+  z-index: -1;
 }
 #celltrion-kiosk .page6 .p1, #celltrion-kiosk .page6 .p2 {
-  opacity: 1;
-  transform: scale(1);
-  transition: transform 1.5s cubic-bezier(0.33, 1, 0.68, 1), opacity 0.5s ease;
+  display: inline-block; /* 중요! inline이면 안됨 */
+  transform-origin: center center; /* 중심기준 */
+  transition: filter 0.6s ease, opacity 0.6s ease, transform 0.6s ease;
+  opacity: 0.6;
 }
-@keyframes emphasize {
+#celltrion-kiosk .page6 .p1.active, #celltrion-kiosk .page6 .p2.active {
+  z-index: 2;
+  opacity: 1;
+  animation: emphasizeAnim 4s ease-in-out forwards;
+}
+@keyframes emphasizeAnim {
   0% {
-    transform: scale(1);
+    filter: brightness(1.1) drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.9;
   }
   50% {
-    transform: scale(1.1);
+    filter: brightness(1.2) drop-shadow(0 0 15px rgba(0, 0, 0, 0.3));
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.9;
   }
   100% {
-    transform: scale(1);
+    filter: brightness(1.1) drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+    opacity: 1;
   }
-}
-#celltrion-kiosk .page6 .emphasize {
-  animation: emphasize 1.5s cubic-bezier(0.33, 1, 0.68, 1);
-}
-#celltrion-kiosk .page6 .inactive {
-  opacity: 0.3;
 }
 #celltrion-kiosk .page6 .area {
   position: relative;
@@ -880,19 +961,16 @@ img {
   top: 327px;
   left: 440px;
 }
-#celltrion-kiosk .page6 .area .area-btn-1,
-#celltrion-kiosk .page6 .area .area-btn-2 {
+#celltrion-kiosk .page7 {
+  position: relative;
+  overflow: hidden;
+}
+#celltrion-kiosk .page7 .c {
   position: absolute;
-  width: 488px;
-  height: 73px;
-  left: 1548px;
-  z-index: 2;
-}
-#celltrion-kiosk .page6 .area .area-btn-1 {
-  top: 32px;
-}
-#celltrion-kiosk .page6 .area .area-btn-2 {
-  top: 123px;
+  bottom: -110px;
+  right: 0;
+  transform: translateX(50%);
+  z-index: -1;
 }
 #celltrion-kiosk .page7 .box1 {
   position: relative;

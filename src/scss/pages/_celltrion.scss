@@ -12,10 +12,58 @@ $bottom: 322px;
 $w : $width;
 $h : calc($height - $top - $bottom);
 
+body:has(.swiper-slide1.swiper-slide-active){
+    .edge,
+    #contents::before,
+    #contents::after{
+        opacity: 0;
+        transition-duration: 0s;
+    }
+}
+.edge,
+#contents::before,
+#contents::after{
+    transition: all 0.25s;
+    opacity: 1;
+}
+
+
+.edge{
+    position: absolute;
+    background-color: #45B035;
+    width: 2px;
+    z-index: 500;
+    left: 63px;
+    top: 58px;
+    height: (3460px - 30px);
+}
+#contents::before{
+    content:'';
+    display: block;
+    position: absolute;
+    top: $top;
+    width: 63px;
+    height: calc($h - 1px);
+    left: 0;
+    background: linear-gradient(to right, #45B035 50%, white 50%);
+    z-index: 500;
+}
+#contents::after{
+    content:'';
+    display: block;
+    position: absolute;
+    background: #fff;
+    top:  $top;
+    z-index: 500;
+    right: 0;
+    height: $h;
+    width: 34px;
+}
+
 .sticky-button{
     position: absolute;
     z-index: 999;
-    top: 1499px;
+    top: 1505px;
     left: $left;
     
     .wrpas{
@@ -91,9 +139,9 @@ $h : calc($height - $top - $bottom);
         }
         .hand{
             position: absolute;
-            top: 100px;left: 1200px;
+            top: 100px;left: 1000px;
             z-index: 2;
-            
+
             .tev_home_hand_box {
                 width: 66px;
                 height: 80px;
@@ -172,7 +220,8 @@ $h : calc($height - $top - $bottom);
                 position: relative;
                 opacity: 0;
                 transform: scale(0.95);
-                transition: all 1s cubic-bezier(0.33, 1, 0.68, 1),
+                //transition: all 1s cubic-bezier(0.33, 1, 0.68, 1),
+                transition: all 1s cubic-bezier(0.12, 0, 0.39, 0);
             }
         }
 
@@ -202,6 +251,7 @@ $h : calc($height - $top - $bottom);
     }
 
     .page3{
+        overflow: hidden;
         .year-box{
             position: relative;
             .img-box{
@@ -237,6 +287,8 @@ $h : calc($height - $top - $bottom);
     }
 
     .page4{
+        overflow: hidden;
+        position: relative;
         .img1,
         .img2{
             opacity: 0;
@@ -286,6 +338,14 @@ $h : calc($height - $top - $bottom);
     }
 
     .page5{
+        position: relative;
+        overflow: hidden;
+        .c{
+            position: absolute;
+            bottom: -110px;right: 0;
+            transform: translateX(50%);
+            z-index: -1;
+        }
         .fadeUp{
             position: relative;
             .line{
@@ -335,37 +395,53 @@ $h : calc($height - $top - $bottom);
         }
     }
     .page6{
+        overflow: hidden;
+        position: relative;
+        .c{
+            position: absolute;
+            bottom: -110px;right: 0;
+            transform: translateX(50%);
+            z-index: -1;
+        }
         .p1, .p2 {
-            opacity: 1;
-            transform: scale(1);
-            transition: transform 1.5s cubic-bezier(0.33, 1, 0.68, 1),
-                        opacity 0.5s ease;
+            display: inline-block; /* 중요! inline이면 안됨 */
+            transform-origin: center center; /* 중심기준 */
+            transition: filter 0.6s ease, opacity 0.6s ease, transform 0.6s ease;
+            opacity: 0.6;
+            //transform: translateY(0);
           }
           
-          /* 강조 애니메이션 키프레임 */
-          @keyframes emphasize {
+          .p1.active, .p2.active {
+            z-index: 2;
+            opacity: 1;
+            animation: emphasizeAnim 4s ease-in-out forwards;
+          }
+          
+          @keyframes emphasizeAnim {
             0% {
-              transform: scale(1);
+              //transform: translateY(0);
+              filter: brightness(1.1) drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+              opacity: 1;
+            }
+            25% {
+            //transform: translateY(-20px);
+              opacity: 0.9;
             }
             50% {
-              transform: scale(1.1);
+                //transform: translateY(-10px);
+              filter: brightness(1.2) drop-shadow(0 0 15px rgba(0, 0, 0, 0.3));
+              opacity: 1;
+            }
+            75% {
+                //transform: translateY(-20px);
+              opacity: 0.9;
             }
             100% {
-              transform: scale(1);
+                //transform: translateY(0);
+              filter: brightness(1.1) drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+              opacity: 1;
             }
           }
-          
-          /* 강조 클래스 */
-          .emphasize {
-            animation: emphasize 1.5s cubic-bezier(0.33, 1, 0.68, 1);
-          }
-          
-          /* 비활성화된 애는 살짝 투명 */
-          .inactive {
-            opacity: 0.3;
-          }
-
-          
         .area{
             position: relative;
             .p1{
@@ -376,24 +452,37 @@ $h : calc($height - $top - $bottom);
                 position: absolute;
                 top: 327px;left: 440px;
             }
-            .area-btn-1,
-            .area-btn-2{
-                position: absolute;
-                width: 488px;
-                height: 73px;
-                //background: #000;
-                left: 1548px;z-index: 2;
-            }
-            .area-btn-1{
-                top: 32px;
-            }
-            .area-btn-2{
-                top: 123px;
-            }
+           
+            
+            // .area-btn-1,
+            // .area-btn-2{
+            //     position: absolute;
+            //     width: 488px;
+            //     height: 73px;
+            //     //background: #000;
+            //     left: 1548px;z-index: 2;
+            // }
+            // .area-btn-1{
+            //     top: 32px;
+            // }
+            // .area-btn-2{
+            //     top: 123px;
+            // }
         }
     }
+        
+    
+    
 
     .page7{
+        position: relative;
+        overflow: hidden;
+        .c{
+            position: absolute;
+            bottom: -110px;right: 0;
+            transform: translateX(50%);
+            z-index: -1;
+        }
         .box1{
             position: relative;
             .item{

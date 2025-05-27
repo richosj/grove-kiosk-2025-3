@@ -2,51 +2,33 @@
     <div class="text-1"><img src="./assets/celltrion/06/title.png" alt=""></div>
     <div class="area">
         <img src="./assets/celltrion/06/img_01.png" alt="">
-        <button class="area-btn-1"></button>
-        <button class="area-btn-2"></button>
+        <!-- <button class="area-btn-1"></button>
+        <button class="area-btn-2"></button> -->
         <div class="p1"><img src="./assets/celltrion/06/bora.png" alt=""></div>
         <div class="p2"><img src="./assets/celltrion/06/green.png" alt=""></div>
     </div>
     <div class="img"><img src="./assets/celltrion/06/img_02.png" alt=""></div>
+    <div class="c"><img src="./assets/celltrion/06/c.png" alt=""></div>
     <div class="annotation"><b>References</b> <b>1.</b> Celltrion website. <b>2.</b> Celltrion, data on file.</div>
 </div>
 
 <script>
-    const btn1 = document.querySelector('.area-btn-1');
-    const btn2 = document.querySelector('.area-btn-2');
     const p1 = document.querySelector('.p1');
     const p2 = document.querySelector('.p2');
 
-    let isAnimating = false;
+    let isP1Active = true;
 
     function emphasize(active, inactive) {
-    if (isAnimating) return; // 애니메이션 중 클릭 막기
+    active.classList.add('active');
+    inactive.classList.remove('active');
 
-    isAnimating = true;
-
-    // inactive에 inactive 클래스 추가
-    inactive.classList.add('inactive');
-
-    // emphasize 클래스 강제로 다시 트리거
-    active.classList.remove('emphasize');
-    void active.offsetWidth;
-    active.classList.add('emphasize');
-
-    // 애니메이션 끝나면 정리
-    active.addEventListener('animationend', function handler() {
-        active.classList.remove('emphasize');
-        inactive.classList.remove('inactive');
-        isAnimating = false;
-        active.removeEventListener('animationend', handler);
-    });
+    setTimeout(() => {
+        // 교차
+        isP1Active = !isP1Active;
+        emphasize(isP1Active ? p1 : p2, isP1Active ? p2 : p1);
+    }, 4000); // 4초 동안 강조 후 교차
     }
 
-    btn1.addEventListener('click', () => {
+    // 시작
     emphasize(p1, p2);
-    });
-
-    btn2.addEventListener('click', () => {
-    emphasize(p2, p1);
-    });
-    
 </script>
