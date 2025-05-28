@@ -345,13 +345,11 @@
         });
 
         document.querySelector('.home-button')?.addEventListener('click', () => {
-            //swiper.slideTo(0)
-            alert('move to intro page');
+            swiper.slideTo(0)
         });
         document.querySelector('.goto-home')?.addEventListener('click', (e) => {
             e.preventDefault();
-            swiper.slideTo(0);
-            return false;
+            alert('move to intro page');
         });
 
         document.querySelector('.menu-item-1')?.addEventListener('click', () => {
