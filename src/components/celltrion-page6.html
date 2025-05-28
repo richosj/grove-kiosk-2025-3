@@ -2,6 +2,13 @@
     <div class="text-1"><img src="./assets/celltrion/06/title.png" alt=""></div>
     <div class="area">
         <img src="./assets/celltrion/06/img_01.png" alt="">
+        <div class="area-marker-container">
+            <div class="area-marker-container-inner">
+                <img src="./assets/celltrion/06/back.png" alt="">
+                <div class="area-marker1"><img src="./assets/celltrion/06/1.png" alt=""></div>
+                <div class="area-marker2"><img src="./assets/celltrion/06/2.png" alt=""></div>
+            </div>
+        </div>
         <!-- <button class="area-btn-1"></button>
         <button class="area-btn-2"></button> -->
         <div class="p1"><img src="./assets/celltrion/06/bora.png" alt=""></div>
@@ -13,22 +20,36 @@
 </div>
 
 <script>
-    const p1 = document.querySelector('.p1');
-    const p2 = document.querySelector('.p2');
+   const pairs = [
+  { marker: document.querySelector('.area-marker1'), p: document.querySelector('.p1') },
+  { marker: document.querySelector('.area-marker2'), p: document.querySelector('.p2') }
+];
 
-    let isP1Active = true;
+let currentIndex = 0;
 
-    function emphasize(active, inactive) {
-    active.classList.add('active');
-    inactive.classList.remove('active');
+function emphasize() {
+  const activePair = pairs[currentIndex];
+  const inactivePair = pairs[1 - currentIndex];
 
+  activePair.marker.classList.add('active');
+  activePair.p.classList.add('active');
+  inactivePair.marker.classList.remove('active');
+  inactivePair.p.classList.remove('active');
+
+  setTimeout(() => {
+    activePair.marker.classList.remove('active');
+    activePair.p.classList.remove('active');
+
+    currentIndex = 1 - currentIndex;
     setTimeout(() => {
-        // 교차
-        isP1Active = !isP1Active;
-        emphasize(isP1Active ? p1 : p2, isP1Active ? p2 : p1);
-    }, 4000); // 4초 동안 강조 후 교차
-    }
+      emphasize();
+    }, 2000); // 2초 대기
+  }, 2000); // 2초 깜빡 애니메이션
+}
 
-    // 시작
-    emphasize(p1, p2);
+emphasize();
+
+
+
+
 </script>

@@ -331,7 +331,7 @@ img {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: url(../../assets//celltrion/menu.png) no-repeat 0 0;
+  background: url(..//celltrion/menu.png) no-repeat 0 0;
   touch-action: none;
 }
 
@@ -410,6 +410,10 @@ body:has(.swiper-slide1.swiper-slide-active) #contents::after {
   opacity: 0;
   transition-duration: 0s;
 }
+body:has(.swiper-slide1.swiper-slide-active) .page1_line {
+  opacity: 1;
+  transition-delay: 0.25s;
+}
 
 .edge,
 #contents::before,
@@ -452,11 +456,23 @@ body:has(.swiper-slide1.swiper-slide-active) #contents::after {
   width: 34px;
 }
 
+.page1_line {
+  position: absolute;
+  top: 0;
+  left: 31px;
+  bottom: 0;
+  width: 4px;
+  background: #45B035;
+  z-index: 1000;
+  opacity: 0;
+  transition: all 0s;
+}
+
 .sticky-button {
   position: absolute;
   z-index: 999;
   top: 1505px;
-  left: 35px;
+  left: 31px;
 }
 .sticky-button .wrpas {
   position: relative;
@@ -479,11 +495,11 @@ body:has(.swiper-slide1.swiper-slide-active) #contents::after {
   height: 300px;
 }
 .sticky-button .nav-open {
-  background: url(../../assets//celltrion/open.png) no-repeat 50% 50%;
+  background: url(..//celltrion/open.png) no-repeat 50% 50%;
   transition: all 0.5s ease-in-out;
 }
 .sticky-button .nav-open.on {
-  background-image: url(../../assets//celltrion/close.png);
+  background-image: url(..//celltrion/close.png);
 }
 
 #celltrion-kiosk {
@@ -492,7 +508,7 @@ body:has(.swiper-slide1.swiper-slide-active) #contents::after {
   height: 100%;
   overflow: hidden;
   background: #000;
-  background: url(../../assets//celltrion/layer.png) no-repeat 0 0;
+  background: url(..//celltrion/layer.png) no-repeat 0 0;
   padding: 28px 0 322px 0;
 }
 #celltrion-kiosk #contents {
@@ -917,35 +933,57 @@ body:has(.swiper-slide1.swiper-slide-active) #contents::after {
   transform: translateX(50%);
   z-index: -1;
 }
-#celltrion-kiosk .page6 .p1, #celltrion-kiosk .page6 .p2 {
+#celltrion-kiosk .page6 .area-marker1 img,
+#celltrion-kiosk .page6 .area-marker2 img,
+#celltrion-kiosk .page6 .p1 img, #celltrion-kiosk .page6 .p2 img {
   display: inline-block; /* 중요! inline이면 안됨 */
   transform-origin: center center; /* 중심기준 */
-  transition: filter 0.6s ease, opacity 0.6s ease, transform 0.6s ease;
-  opacity: 0.6;
-}
-#celltrion-kiosk .page6 .p1.active, #celltrion-kiosk .page6 .p2.active {
-  z-index: 2;
+  transition: opacity 0.4s ease;
   opacity: 1;
-  animation: emphasizeAnim 4s ease-in-out forwards;
 }
-@keyframes emphasizeAnim {
+#celltrion-kiosk .page6 .area-marker1.active,
+#celltrion-kiosk .page6 .area-marker2.active,
+#celltrion-kiosk .page6 .p1.active,
+#celltrion-kiosk .page6 .p2.active {
+  z-index: 2;
+}
+#celltrion-kiosk .page6 .area-marker1.active img,
+#celltrion-kiosk .page6 .area-marker2.active img,
+#celltrion-kiosk .page6 .p1.active img,
+#celltrion-kiosk .page6 .p2.active img {
+  animation: blinkTwice 2s ease-in-out forwards;
+}
+#celltrion-kiosk .page6 .area-marker-container {
+  position: absolute;
+  right: 102px;
+  top: 0;
+}
+#celltrion-kiosk .page6 .area-marker-container .area-marker-container-inner {
+  position: relative;
+}
+#celltrion-kiosk .page6 .area-marker1,
+#celltrion-kiosk .page6 .area-marker2 {
+  position: absolute;
+  left: 51px;
+}
+#celltrion-kiosk .page6 .area-marker1 {
+  top: 33px;
+}
+#celltrion-kiosk .page6 .area-marker2 {
+  top: 120px;
+}
+@keyframes blinkTwice {
   0% {
-    filter: brightness(1.1) drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
     opacity: 1;
   }
-  25% {
-    opacity: 0.9;
+  28% {
+    opacity: 0;
   }
-  50% {
-    filter: brightness(1.2) drop-shadow(0 0 15px rgba(0, 0, 0, 0.3));
+  56% {
     opacity: 1;
   }
-  75% {
-    opacity: 0.9;
-  }
-  100% {
-    filter: brightness(1.1) drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
-    opacity: 1;
+  80% {
+    opacity: 0;
   }
 }
 #celltrion-kiosk .page6 .area {

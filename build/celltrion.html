@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=2160, height=3840, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./assets/swiper-bundle.min.css" />
     <title>CELLTRION</title>
     
-  <script type="module" crossorigin src="./assets/js/celltrion.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/css/styles.css">
+  <script src="./assets/js/celltrion.js"></script>
+  <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 
 <body>
@@ -29,7 +29,7 @@
         </nav>        <div class="sticky-button">
             <div class="wrpas">
                 <img src="./assets/celltrion/click.png" alt="">
-                <a href="./index.html" aria-label="홈으로"></a>
+                <a href="#" class="goto-home" aria-label="홈으로"></a>
                 <button class="nav-open" aria-label="메뉴 열기"></button>
             </div>
         </div>
@@ -85,6 +85,7 @@
         </div>
     
         <div id="contents">
+            <div class="page1_line"></div>
             <div class="edge"></div>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
@@ -201,6 +202,13 @@
                             <div class="text-1"><img src="./assets/celltrion/06/title.png" alt=""></div>
                             <div class="area">
                                 <img src="./assets/celltrion/06/img_01.png" alt="">
+                                <div class="area-marker-container">
+                                    <div class="area-marker-container-inner">
+                                        <img src="./assets/celltrion/06/back.png" alt="">
+                                        <div class="area-marker1"><img src="./assets/celltrion/06/1.png" alt=""></div>
+                                        <div class="area-marker2"><img src="./assets/celltrion/06/2.png" alt=""></div>
+                                    </div>
+                                </div>
                                 <!-- <button class="area-btn-1"></button>
                                 <button class="area-btn-2"></button> -->
                                 <div class="p1"><img src="./assets/celltrion/06/bora.png" alt=""></div>
@@ -212,24 +220,38 @@
                         </div>
                         
                         <script>
-                            const p1 = document.querySelector('.p1');
-                            const p2 = document.querySelector('.p2');
+                           const pairs = [
+                          { marker: document.querySelector('.area-marker1'), p: document.querySelector('.p1') },
+                          { marker: document.querySelector('.area-marker2'), p: document.querySelector('.p2') }
+                        ];
                         
-                            let isP1Active = true;
+                        let currentIndex = 0;
                         
-                            function emphasize(active, inactive) {
-                            active.classList.add('active');
-                            inactive.classList.remove('active');
+                        function emphasize() {
+                          const activePair = pairs[currentIndex];
+                          const inactivePair = pairs[1 - currentIndex];
                         
+                          activePair.marker.classList.add('active');
+                          activePair.p.classList.add('active');
+                          inactivePair.marker.classList.remove('active');
+                          inactivePair.p.classList.remove('active');
+                        
+                          setTimeout(() => {
+                            activePair.marker.classList.remove('active');
+                            activePair.p.classList.remove('active');
+                        
+                            currentIndex = 1 - currentIndex;
                             setTimeout(() => {
-                                // 교차
-                                isP1Active = !isP1Active;
-                                emphasize(isP1Active ? p1 : p2, isP1Active ? p2 : p1);
-                            }, 4000); // 4초 동안 강조 후 교차
-                            }
+                              emphasize();
+                            }, 2000); // 2초 대기
+                          }, 2000); // 2초 깜빡 애니메이션
+                        }
                         
-                            // 시작
-                            emphasize(p1, p2);
+                        emphasize();
+                        
+                        
+                        
+                        
                         </script>                    </div>
                     <div class="swiper-slide" aria-label="7 페이지">
                         <div class="page7 page">
@@ -250,8 +272,9 @@
             </div>
         </div>
     </div>
-
-    <script src="//cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+    <script src="./assets/swiper-bundle.min.js"></script>
     <script>
         const navopen = document.querySelector('.nav-open');
         const nav = document.querySelector('.nav');
@@ -259,7 +282,7 @@
         const swiper = new Swiper('.swiper-container', {
             slidesPerView: 1,
             pagination: { el: '.swiper-pagination', clickable: true },
-            //initialSlide: 2,
+            //initialSlide: 5,
             on: {
                 init() {
                     updatePageActive()
@@ -325,6 +348,10 @@
 
         document.querySelector('.home-button')?.addEventListener('click', () => {
             swiper.slideTo(0)
+        });
+        document.querySelector('.goto-home')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            //alert('move to intro page');
         });
 
         document.querySelector('.menu-item-1')?.addEventListener('click', () => {

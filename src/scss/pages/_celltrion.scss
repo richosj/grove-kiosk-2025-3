@@ -19,6 +19,10 @@ body:has(.swiper-slide1.swiper-slide-active){
         opacity: 0;
         transition-duration: 0s;
     }
+    .page1_line{
+        opacity: 1;
+        transition-delay: 0.25s;
+    }
 }
 .edge,
 #contents::before,
@@ -59,13 +63,23 @@ body:has(.swiper-slide1.swiper-slide-active){
     height: $h;
     width: 34px;
 }
+.page1_line{
+    position: absolute;
+    top: 0;
+    left: 31px;
+    bottom: 0;
+    width: 4px;
+    background: #45B035;
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0s;
+}
 
 .sticky-button{
     position: absolute;
     z-index: 999;
     top: 1505px;
-    left: $left;
-    
+    left: 31px;
     .wrpas{
         position: relative;
         a,
@@ -403,43 +417,61 @@ body:has(.swiper-slide1.swiper-slide-active){
             transform: translateX(50%);
             z-index: -1;
         }
+        .area-marker1,
+        .area-marker2,
         .p1, .p2 {
-            display: inline-block; /* 중요! inline이면 안됨 */
-            transform-origin: center center; /* 중심기준 */
-            transition: filter 0.6s ease, opacity 0.6s ease, transform 0.6s ease;
-            opacity: 0.6;
+            
             //transform: translateY(0);
+            img{
+                display: inline-block; /* 중요! inline이면 안됨 */
+                transform-origin: center center; /* 중심기준 */
+                transition: opacity .4s ease;
+                opacity: 1;
+            }
           }
           
-          .p1.active, .p2.active {
+          .area-marker1.active,
+          .area-marker2.active,
+          .p1.active,
+          .p2.active {
             z-index: 2;
-            opacity: 1;
-            animation: emphasizeAnim 4s ease-in-out forwards;
+            img{
+                animation: blinkTwice 2s ease-in-out forwards;
+            }
+          }
+          .area-marker-container{
+            position: absolute;
+            right: 102px;
+            top: 0;
+            .area-marker-container-inner{
+                position: relative;
+            }
+          }
+          .area-marker1,
+          .area-marker2{
+            position: absolute;
+            left: 51px;
+          }
+          .area-marker1{
+            top: 33px;
+          }
+          .area-marker2{
+            top: 120px;
           }
           
-          @keyframes emphasizeAnim {
+          
+          @keyframes blinkTwice {
             0% {
-              //transform: translateY(0);
-              filter: brightness(1.1) drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
               opacity: 1;
             }
-            25% {
-            //transform: translateY(-20px);
-              opacity: 0.9;
+            28% {
+              opacity: 0;
             }
-            50% {
-                //transform: translateY(-10px);
-              filter: brightness(1.2) drop-shadow(0 0 15px rgba(0, 0, 0, 0.3));
+            56% {
               opacity: 1;
             }
-            75% {
-                //transform: translateY(-20px);
-              opacity: 0.9;
-            }
-            100% {
-                //transform: translateY(0);
-              filter: brightness(1.1) drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
-              opacity: 1;
+            80% {
+              opacity: 0;
             }
           }
         .area{
@@ -452,22 +484,6 @@ body:has(.swiper-slide1.swiper-slide-active){
                 position: absolute;
                 top: 327px;left: 440px;
             }
-           
-            
-            // .area-btn-1,
-            // .area-btn-2{
-            //     position: absolute;
-            //     width: 488px;
-            //     height: 73px;
-            //     //background: #000;
-            //     left: 1548px;z-index: 2;
-            // }
-            // .area-btn-1{
-            //     top: 32px;
-            // }
-            // .area-btn-2{
-            //     top: 123px;
-            // }
         }
     }
         

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=2160, height=3840, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="/assets/swiper-bundle.min.css" />
     <title>CELLTRION</title>
     
 </head>
@@ -16,7 +16,7 @@
         <div class="sticky-button">
             <div class="wrpas">
                 <img src="./assets/celltrion/click.png" alt="">
-                <a href="./index.html" aria-label="홈으로"></a>
+                <a href="#" class="goto-home" aria-label="홈으로"></a>
                 <button class="nav-open" aria-label="메뉴 열기"></button>
             </div>
         </div>
@@ -72,6 +72,7 @@
         </div>
     
         <div id="contents">
+            <div class="page1_line"></div>
             <div class="edge"></div>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
@@ -102,7 +103,7 @@
     </div>
 
     <script src="/js/main.js" type="module"></script>
-    <script src="//cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="/assets/swiper-bundle.min.js"></script>
     <script>
         const navopen = document.querySelector('.nav-open');
         const nav = document.querySelector('.nav');
@@ -110,7 +111,7 @@
         const swiper = new Swiper('.swiper-container', {
             slidesPerView: 1,
             pagination: { el: '.swiper-pagination', clickable: true },
-            //initialSlide: 2,
+            initialSlide: 5,
             on: {
                 init() {
                     updatePageActive()
@@ -176,6 +177,10 @@
 
         document.querySelector('.home-button')?.addEventListener('click', () => {
             swiper.slideTo(0)
+        });
+        document.querySelector('.goto-home')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            //alert('move to intro page');
         });
 
         document.querySelector('.menu-item-1')?.addEventListener('click', () => {
