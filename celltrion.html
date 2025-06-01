@@ -4,11 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=2160, height=3840, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="/grove-kiosk-2025-3/assets/swiper-bundle.min.css" />
-    <title>CELLTRION</title>
     
-  <script type="module" crossorigin src="/grove-kiosk-2025-3/assets/js/celltrion.js"></script>
-  <link rel="stylesheet" crossorigin href="/grove-kiosk-2025-3/assets/css/styles.css">
+    <title>CELLTRION</title>
+    <link rel="stylesheet" href="assets/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/css/celltrionStyle.css" />
+  <script type="module" crossorigin src="/grove-kiosk-2025-3/assets/main-BOdqqOxV.js"></script>
+  <link rel="stylesheet" crossorigin href="/grove-kiosk-2025-3/assets/css/main.css">
+  <link rel="stylesheet" crossorigin href="/grove-kiosk-2025-3/assets/css/celltrionStyle.css">
 </head>
 
 <body>
@@ -29,7 +31,7 @@
         </nav>        <div class="sticky-button">
             <div class="wrpas">
                 <img src="./assets/celltrion/click.png" alt="">
-                <a href="#" class="goto-home" aria-label="홈으로"></a>
+                <a href="./biosimilar.html" class="goto-home" aria-label="홈으로"></a>
                 <button class="nav-open" aria-label="메뉴 열기"></button>
             </div>
         </div>
@@ -97,7 +99,7 @@
                             <div class="text-4"><img src="./assets/celltrion/01/img_06.png" alt=""></div>
                             <div class="text-5" style="overflow: hidden;height: 300px;"><img src="./assets/celltrion/01/img_07.png" alt="">
                                 <button class="open-popup" data-popup="popup1"></button>
-                                <div class="hand">
+                                <div class="hand" data-popup="popup1">
                                     <div class="tev_home_hand_box">
                                         <div class="tev_home_hand_box_first">
                                             <img src="/grove-kiosk-2025-3/assets/celltrion/01/hand.png" alt="">
@@ -273,6 +275,7 @@
         </div>
     </div>
 
+
     <script src="/grove-kiosk-2025-3/assets/swiper-bundle.min.js"></script>
     <script>
         const navopen = document.querySelector('.nav-open');
@@ -281,7 +284,7 @@
         const swiper = new Swiper('.swiper-container', {
             slidesPerView: 1,
             pagination: { el: '.swiper-pagination', clickable: true },
-            initialSlide: 5,
+            initialSlide: 0,
             on: {
                 init() {
                     updatePageActive()
@@ -329,6 +332,14 @@
             });
         });
 
+        document.querySelectorAll('.hand').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const popupId = item.getAttribute('data-popup');
+                const popup = document.getElementById(popupId);
+                popup.classList.add('show');
+            });
+        });
         overlay.forEach(item => {
             item.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -349,8 +360,8 @@
             swiper.slideTo(0)
         });
         document.querySelector('.goto-home')?.addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('move to intro page');
+            //e.preventDefault();
+            //alert('move to intro page');
         });
 
         document.querySelector('.menu-item-1')?.addEventListener('click', () => {
