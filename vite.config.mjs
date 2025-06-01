@@ -1,9 +1,12 @@
-import glob from 'fast-glob'
 import fs from 'fs'
 import path from 'path'
+import { fileURLToPath } from 'url'
 import { defineConfig, loadEnv } from 'vite'
 import handlebars from 'vite-plugin-handlebars'
 import ViteRestart from 'vite-plugin-restart'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
@@ -43,17 +46,18 @@ export default defineConfig(({ mode }) => {
       outDir: isGhPages ? '../dist' : isLocalBuild ? '../build' : '../dist',
       emptyOutDir: true,
       rollupOptions: {
-        // ✅ src/*.html을 그대로 input으로
-        input: Object.fromEntries(
-          glob.sync('src/*.html').map(file => {
-            const name = path.basename(file, '.html')
-            return [name, path.resolve(__dirname, file)]
-          })
-        ),
+        // HTML 엔트리
+        input: {
+          biosimilar: path.resolve(__dirname, 'src/biosimilar.html'),
+          celltrion: path.resolve(__dirname, 'src/celltrion.html'),
+          // 각자 SCSS 전용 엔트리
+          celltrionStyle: path.resolve(__dirname, 'src/scss/pages/celltrion.scss'),
+          biosimilarStyle: path.resolve(__dirname, 'src/scss/pages/biosimilar.scss')
+        },
         output: {
           entryFileNames: 'assets/js/[name].js',
           assetFileNames: ({ name }) => {
-            if (name && name.endsWith('.css')) return 'assets/css/styles.css'
+            if (name.endsWith('.css')) return 'assets/css/[name].css'
             return 'assets/[name]'
           }
         }

@@ -1,0 +1,620 @@
+@charset "UTF-8";
+body:has(.swiper-slide1.swiper-slide-active) .edge,
+body:has(.swiper-slide1.swiper-slide-active) #contents::before,
+body:has(.swiper-slide1.swiper-slide-active) #contents::after {
+  opacity: 0;
+  transition-duration: 0s;
+}
+body:has(.swiper-slide1.swiper-slide-active) .page1_line {
+  opacity: 1;
+  transition-delay: 0.25s;
+}
+
+.edge,
+#contents::before,
+#contents::after {
+  transition: all 0.25s;
+  opacity: 1;
+}
+
+.edge {
+  position: absolute;
+  background-color: #45B035;
+  width: 2px;
+  z-index: 500;
+  left: 63px;
+  top: 58px;
+  height: 3430px;
+}
+
+#contents::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 28px;
+  width: 63px;
+  height: 3489px;
+  left: 0;
+  background: linear-gradient(to right, #45B035 50%, white 50%);
+  z-index: 500;
+}
+
+#contents::after {
+  content: "";
+  display: block;
+  position: absolute;
+  background: #fff;
+  top: 28px;
+  z-index: 500;
+  right: 0;
+  height: 3490px;
+  width: 34px;
+}
+
+.page1_line {
+  position: absolute;
+  top: 0;
+  left: 31px;
+  bottom: 0;
+  width: 4px;
+  background: #45B035;
+  z-index: 1000;
+  opacity: 0;
+  transition: all 0s;
+}
+
+.sticky-button {
+  position: absolute;
+  z-index: 999;
+  top: 1505px;
+  left: 31px;
+}
+.sticky-button .wrpas {
+  position: relative;
+}
+.sticky-button .wrpas a,
+.sticky-button .wrpas button {
+  display: block;
+  position: absolute;
+  width: 222px;
+  left: 0;
+}
+.sticky-button .wrpas a {
+  z-index: 1;
+  top: 0;
+  height: 300px;
+}
+.sticky-button .wrpas button {
+  z-index: 2;
+  top: 273px;
+  height: 300px;
+}
+.sticky-button .nav-open {
+  background: url(../celltrion/open.png) no-repeat 50% 50%;
+  transition: all 0.5s ease-in-out;
+}
+.sticky-button .nav-open.on {
+  background-image: url(../celltrion/close.png);
+}
+
+#celltrion-kiosk {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  background: url(../celltrion/layer.png) no-repeat 0 0;
+  padding: 28px 0 322px 0;
+}
+#celltrion-kiosk #contents {
+  overflow: hidden;
+  width: 2160px;
+  height: 3490px;
+}
+#celltrion-kiosk .annotation {
+  position: absolute;
+  z-index: 2;
+  bottom: 62px;
+  left: 92px;
+  font-size: 15px;
+  color: #848889;
+}
+#celltrion-kiosk .page {
+  width: 2160px;
+  height: 3490px;
+}
+#celltrion-kiosk .page1 {
+  position: relative;
+  padding-top: 700px;
+}
+#celltrion-kiosk .page1 .text-1, #celltrion-kiosk .page1 .text-2, #celltrion-kiosk .page1 .text-3, #celltrion-kiosk .page1 .text-4, #celltrion-kiosk .page1 .text-5 {
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 1s ease-in-out;
+}
+#celltrion-kiosk .page1 .text-6 {
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transition: all 1s ease-in-out;
+}
+#celltrion-kiosk .page1 .open-popup {
+  position: absolute;
+  top: 0;
+  left: 720px;
+  z-index: 2;
+  width: 650px;
+  height: 130px;
+}
+#celltrion-kiosk .page1 .hand {
+  position: absolute;
+  top: 100px;
+  left: 1000px;
+  z-index: 2;
+}
+#celltrion-kiosk .page1 .hand .tev_home_hand_box {
+  width: 66px;
+  height: 80px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: absolute;
+  top: 65%;
+  left: 65%;
+}
+#celltrion-kiosk .page1 .hand .tev_home_hand_box_first {
+  flex: 100% 0 0;
+  height: 100%;
+  position: relative;
+  z-index: 3;
+  animation: linear click_ani_03 2s infinite;
+  -webkit-animation: linear click_ani_03 3s infinite;
+}
+#celltrion-kiosk .page1 .hand .tev_home_hand_box_second {
+  transform: translate(-105%, -40px);
+  flex: 100% 0 0;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+  animation: linear click_ani_02 3s infinite;
+  -webkit-animation: linear click_ani_02 3s infinite;
+}
+#celltrion-kiosk .page1 .hand .tev_home_hand_box_third {
+  transform: translateX(-390%);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 60px;
+  flex: 100% 0 0;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+#celltrion-kiosk .page1 .hand .tev_home_hand_box_third .circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #00a869;
+  animation: linear click_ani_01 3s infinite;
+  -webkit-animation: linear click_ani_01 3s infinite;
+}
+#celltrion-kiosk .page1 .background {
+  position: absolute;
+  top: 0;
+  left: 35px;
+}
+#celltrion-kiosk .page1.active .text-1 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+#celltrion-kiosk .page1.active .text-2 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.15s;
+}
+#celltrion-kiosk .page1.active .text-3 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
+#celltrion-kiosk .page1.active .text-4 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.45s;
+}
+#celltrion-kiosk .page1.active .text-5 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.6s;
+}
+#celltrion-kiosk .page1.active .text-6 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.75s;
+}
+#celltrion-kiosk .page2 .boxgroup {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding-left: 151px;
+}
+#celltrion-kiosk .page2 .boxgroup .box {
+  position: relative;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 1s cubic-bezier(0.12, 0, 0.39, 0);
+}
+#celltrion-kiosk .page2.active .boxgroup .box1 {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0s;
+}
+#celltrion-kiosk .page2.active .boxgroup .box3 {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0s;
+}
+#celltrion-kiosk .page2.active .boxgroup .box5 {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0s;
+}
+#celltrion-kiosk .page2.active .boxgroup .box7 {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0s;
+}
+#celltrion-kiosk .page2.active .boxgroup .box9 {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0s;
+}
+#celltrion-kiosk .page2.active .boxgroup .box11 {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0s;
+}
+#celltrion-kiosk .page2.active .boxgroup .box13 {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0s;
+}
+#celltrion-kiosk .page2.active .boxgroup .box15 {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0s;
+}
+#celltrion-kiosk .page2.active .boxgroup .box2 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.15s;
+}
+#celltrion-kiosk .page2.active .boxgroup .box4 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.15s;
+}
+#celltrion-kiosk .page2.active .boxgroup .box6 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.15s;
+}
+#celltrion-kiosk .page2.active .boxgroup .box8 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.15s;
+}
+#celltrion-kiosk .page2.active .boxgroup .box10 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.15s;
+}
+#celltrion-kiosk .page2.active .boxgroup .box12 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.15s;
+}
+#celltrion-kiosk .page2.active .boxgroup .box14 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.15s;
+}
+#celltrion-kiosk .page3 {
+  overflow: hidden;
+}
+#celltrion-kiosk .page3 .year-box {
+  position: relative;
+}
+#celltrion-kiosk .page3 .year-box .img-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#celltrion-kiosk .page3 .year-box .img-box .img {
+  position: relative;
+  opacity: 0;
+  transform: translateY(0) scale(0.95);
+  transition: all 1.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+#celltrion-kiosk .page3 .year-box .c {
+  position: absolute;
+  top: 100px;
+  right: 0;
+  transform: translateX(50%);
+}
+#celltrion-kiosk .page3 .annotation {
+  color: #45b035;
+  font-size: 26px;
+}
+#celltrion-kiosk .page3.active .year-box .img-box .img-1 {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 0s;
+}
+#celltrion-kiosk .page3.active .year-box .img-box .img-2 {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 0.35s;
+}
+#celltrion-kiosk .page3.active .year-box .img-box .img-3 {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 0.7s;
+}
+#celltrion-kiosk .page3.active .year-box .img-box .img-4 {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 1.05s;
+}
+#celltrion-kiosk .page4 {
+  overflow: hidden;
+  position: relative;
+}
+#celltrion-kiosk .page4 .img1,
+#celltrion-kiosk .page4 .img2 {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 1s cubic-bezier(0.33, 1, 0.68, 1);
+  position: relative;
+}
+#celltrion-kiosk .page4 .img3 {
+  animation: growShrink 1.2s infinite alternate ease-in-out;
+}
+#celltrion-kiosk .page4 .img-box {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 1s cubic-bezier(0.33, 1, 0.68, 1);
+  position: absolute;
+}
+#celltrion-kiosk .page4 .img-box1 {
+  top: 103px;
+  left: 208px;
+}
+#celltrion-kiosk .page4 .img-box2 {
+  top: 103px;
+  left: 1138px;
+}
+#celltrion-kiosk .page4 .img-box3 {
+  top: 637px;
+  left: 208px;
+}
+#celltrion-kiosk .page4 .img-box4 {
+  top: 637px;
+  left: 1138px;
+}
+#celltrion-kiosk .page4.active .img1,
+#celltrion-kiosk .page4.active .img2 {
+  opacity: 1;
+  transform: scale(1);
+}
+#celltrion-kiosk .page4.active .img2 {
+  transition-delay: 0.35s;
+}
+#celltrion-kiosk .page4.active .img-box1 {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0s;
+}
+#celltrion-kiosk .page4.active .img-box2 {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0.45s;
+}
+#celltrion-kiosk .page4.active .img-box3 {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0.9s;
+}
+#celltrion-kiosk .page4.active .img-box4 {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 1.35s;
+}
+#celltrion-kiosk .page5 {
+  position: relative;
+  overflow: hidden;
+}
+#celltrion-kiosk .page5 .c {
+  position: absolute;
+  bottom: -110px;
+  right: 0;
+  transform: translateX(50%);
+  z-index: -1;
+}
+#celltrion-kiosk .page5 .fadeUp {
+  position: relative;
+}
+#celltrion-kiosk .page5 .fadeUp .line {
+  padding-top: 250px;
+  padding-left: 315px;
+}
+#celltrion-kiosk .page5 .fadeUp .test {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#celltrion-kiosk .page5 .fadeUp .unit {
+  position: absolute;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 1s cubic-bezier(0.33, 1, 0.68, 1);
+}
+#celltrion-kiosk .page5 .fadeUp .unit-1, #celltrion-kiosk .page5 .fadeUp .unit-3, #celltrion-kiosk .page5 .fadeUp .unit-5 {
+  left: 308px;
+}
+#celltrion-kiosk .page5 .fadeUp .unit-2, #celltrion-kiosk .page5 .fadeUp .unit-4, #celltrion-kiosk .page5 .fadeUp .unit-6 {
+  left: 1029px;
+}
+#celltrion-kiosk .page5 .fadeUp .unit-1 {
+  top: 0;
+}
+#celltrion-kiosk .page5 .fadeUp .unit-2 {
+  top: 36px;
+}
+#celltrion-kiosk .page5 .fadeUp .unit-3 {
+  top: 564px;
+}
+#celltrion-kiosk .page5 .fadeUp .unit-4 {
+  top: 701px;
+}
+#celltrion-kiosk .page5 .fadeUp .unit-5 {
+  top: 1193px;
+}
+#celltrion-kiosk .page5 .fadeUp .unit-6 {
+  top: 1195px;
+}
+#celltrion-kiosk .page5.active .fadeUp .unit-1 {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0s;
+}
+#celltrion-kiosk .page5.active .fadeUp .unit-2 {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0.25s;
+}
+#celltrion-kiosk .page5.active .fadeUp .unit-3 {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0.5s;
+}
+#celltrion-kiosk .page5.active .fadeUp .unit-4 {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0.75s;
+}
+#celltrion-kiosk .page5.active .fadeUp .unit-5 {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 1s;
+}
+#celltrion-kiosk .page5.active .fadeUp .unit-6 {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 1.25s;
+}
+#celltrion-kiosk .page6 {
+  overflow: hidden;
+  position: relative;
+}
+#celltrion-kiosk .page6 .c {
+  position: absolute;
+  bottom: -110px;
+  right: 0;
+  transform: translateX(50%);
+  z-index: -1;
+}
+#celltrion-kiosk .page6 .area-marker1 img,
+#celltrion-kiosk .page6 .area-marker2 img,
+#celltrion-kiosk .page6 .p1 img, #celltrion-kiosk .page6 .p2 img {
+  display: inline-block; /* 중요! inline이면 안됨 */
+  transform-origin: center center; /* 중심기준 */
+  transition: opacity 0.4s ease;
+  opacity: 1;
+}
+#celltrion-kiosk .page6 .area-marker1.active,
+#celltrion-kiosk .page6 .area-marker2.active,
+#celltrion-kiosk .page6 .p1.active,
+#celltrion-kiosk .page6 .p2.active {
+  z-index: 2;
+}
+#celltrion-kiosk .page6 .area-marker1.active img,
+#celltrion-kiosk .page6 .area-marker2.active img,
+#celltrion-kiosk .page6 .p1.active img,
+#celltrion-kiosk .page6 .p2.active img {
+  animation: blinkTwice 2s ease-in-out forwards;
+}
+#celltrion-kiosk .page6 .area-marker-container {
+  position: absolute;
+  right: 102px;
+  top: 0;
+}
+#celltrion-kiosk .page6 .area-marker-container .area-marker-container-inner {
+  position: relative;
+}
+#celltrion-kiosk .page6 .area-marker1,
+#celltrion-kiosk .page6 .area-marker2 {
+  position: absolute;
+  left: 51px;
+}
+#celltrion-kiosk .page6 .area-marker1 {
+  top: 33px;
+}
+#celltrion-kiosk .page6 .area-marker2 {
+  top: 120px;
+}
+@keyframes blinkTwice {
+  0% {
+    opacity: 1;
+  }
+  28% {
+    opacity: 0;
+  }
+  56% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+}
+#celltrion-kiosk .page6 .area {
+  position: relative;
+}
+#celltrion-kiosk .page6 .area .p1 {
+  position: absolute;
+  top: 140px;
+  left: 290px;
+}
+#celltrion-kiosk .page6 .area .p2 {
+  position: absolute;
+  top: 327px;
+  left: 440px;
+}
+#celltrion-kiosk .page7 {
+  position: relative;
+  overflow: hidden;
+}
+#celltrion-kiosk .page7 .c {
+  position: absolute;
+  bottom: -110px;
+  right: 0;
+  transform: translateX(50%);
+  z-index: -1;
+}
+#celltrion-kiosk .page7 .box1 {
+  position: relative;
+}
+#celltrion-kiosk .page7 .box1 .item1 {
+  position: relative;
+}
+#celltrion-kiosk .page7 .box1 .item2 {
+  position: absolute;
+  z-index: 2;
+  top: 600px;
+  left: 260px;
+  animation: growShrink 1.2s infinite alternate ease-in-out;
+}

@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=2160, height=3840, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="/assets/swiper-bundle.min.css" />
-    <title>CELLTRION</title>
     
+    <title>CELLTRION</title>
+    <link rel="stylesheet" href="assets/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/css/celltrionStyle.css" />
 </head>
 
 <body>
@@ -16,7 +17,7 @@
         <div class="sticky-button">
             <div class="wrpas">
                 <img src="./assets/celltrion/click.png" alt="">
-                <a href="#" class="goto-home" aria-label="홈으로"></a>
+                <a href="./biosimilar.html" class="goto-home" aria-label="홈으로"></a>
                 <button class="nav-open" aria-label="메뉴 열기"></button>
             </div>
         </div>
@@ -102,7 +103,8 @@
         </div>
     </div>
 
-    <script src="/js/main.js" type="module"></script>
+    <script src="/js/celltrion.js" type="module"></script>
+
     <script src="/assets/swiper-bundle.min.js"></script>
     <script>
         const navopen = document.querySelector('.nav-open');
@@ -111,7 +113,7 @@
         const swiper = new Swiper('.swiper-container', {
             slidesPerView: 1,
             pagination: { el: '.swiper-pagination', clickable: true },
-            initialSlide: 5,
+            initialSlide: 0,
             on: {
                 init() {
                     updatePageActive()
@@ -159,6 +161,14 @@
             });
         });
 
+        document.querySelectorAll('.hand').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const popupId = item.getAttribute('data-popup');
+                const popup = document.getElementById(popupId);
+                popup.classList.add('show');
+            });
+        });
         overlay.forEach(item => {
             item.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -179,7 +189,7 @@
             swiper.slideTo(0)
         });
         document.querySelector('.goto-home')?.addEventListener('click', (e) => {
-            e.preventDefault();
+            //e.preventDefault();
             //alert('move to intro page');
         });
 

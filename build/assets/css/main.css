@@ -1,0 +1,413 @@
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, figure, figcaption, blockquote, dl, dd {
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+html {
+  font-size: 10px;
+}
+
+body, th, td, input, select, textarea, button {
+  font-size: 1.4rem;
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  vertical-align: top;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 1.4rem;
+}
+
+/* Font settings */
+body {
+  font-family: "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 2160px;
+  height: 3840px;
+  touch-action: manipulation;
+}
+
+@keyframes growShrink {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.02);
+    opacity: 0.9;
+  }
+}
+@keyframes click_ani_01 {
+  0% {
+    transform: scale(30%);
+    opacity: 0;
+  }
+  40% {
+    transform: scale(30%);
+    opacity: 0;
+  }
+  45% {
+    transform: scale(100%);
+    opacity: 0.5;
+  }
+  60% {
+    transform: scale(350%);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(30%);
+    opacity: 0;
+  }
+}
+@keyframes click_ani_02 {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  45% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes click_ani_03 {
+  0% {
+    transform: scale(130%);
+  }
+  40% {
+    transform: scale(100%);
+  }
+  60% {
+    transform: scale(100%);
+  }
+  100% {
+    transform: scale(130%);
+  }
+}
+@keyframes header_ani_01_01 {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+@keyframes header_ani_02_01 {
+  0% {
+    flex: 0% 0 0;
+  }
+  100% {
+    flex: 100% 0 0;
+  }
+}
+@keyframes header_ani_02_02 {
+  0% {
+    opacity: 1;
+  }
+  5% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  15% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  35% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes header_ani_02_03 {
+  0% {
+    transform: translateX(-110%);
+  }
+  10% {
+    transform: translateX(0%);
+  }
+  40% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: translateX(110%);
+  }
+  100% {
+    transform: translateX(110%);
+  }
+}
+@keyframes tail_ani_02_01 {
+  0% {
+    opacity: 0;
+    transform: translateX(-10%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+@keyframes tail_ani_02_02 {
+  0% {
+    opacity: 0;
+    transform: translateX(-110%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-100%);
+  }
+}
+@keyframes tail_ani_02_02_02 {
+  0% {
+    opacity: 0;
+    transform: translateX(-110%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+@keyframes tail_ani_02_03 {
+  0% {
+    opacity: 0;
+    filter: blur(15px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5760px;
+  height: 5760px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+}
+
+@keyframes expandCircle {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+.popup {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  opacity: 0;
+}
+.popup .popup-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-30px);
+  opacity: 0;
+  transition: all 0.3s 1s ease-in-out;
+  z-index: 2;
+  position: relative;
+}
+.popup.show {
+  transition: all 0s ease-in-out;
+  z-index: 10000;
+  opacity: 1;
+  visibility: visible;
+}
+.popup.show .overlay {
+  animation: expandCircle 1s ease-out forwards;
+}
+.popup.show .popup-content {
+  transform: translateY(0px);
+  opacity: 1;
+}
+.popup .close {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  height: 100px;
+  width: 600px;
+}
+
+.swiper-slide * {
+  will-change: auto;
+}
+
+img {
+  vertical-align: top;
+}
+
+#nav {
+  position: absolute;
+  z-index: 998;
+  left: 35px;
+  height: calc(100% - 322px);
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 2125px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+}
+#nav.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu-container {
+  position: relative;
+  width: 1874px;
+  height: 1874px;
+  transform-origin: center;
+  touch-action: none;
+  margin-top: 200px;
+}
+
+.wheel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: url(../celltrion/menu.png) no-repeat 0 0;
+  touch-action: none;
+}
+
+.home-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 345px;
+  height: 345px;
+  border-radius: 50%;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-item {
+  position: absolute;
+  width: 272px;
+  height: 280px;
+  cursor: pointer;
+}
+
+.menu-item-1 {
+  left: 731px;
+  top: 126px;
+  width: 472px;
+}
+
+.menu-item-2 {
+  left: 1230px;
+  top: 493px;
+  width: 430px;
+}
+
+.menu-item-3 {
+  left: 1160px;
+  top: 1052px;
+  width: 572px;
+  height: 330px;
+}
+
+.menu-item-4 {
+  left: 756px;
+  top: 1433px;
+  width: 382px;
+}
+
+.menu-item-5 {
+  left: 180px;
+  top: 1052px;
+  width: 472px;
+}
+
+.menu-item-6 {
+  left: 180px;
+  top: 493px;
+  width: 472px;
+}
+
+.item-inner {
+  width: 100%;
+  height: 100%;
+  transform-origin: center;
+  transition: transform 0.3s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto;
+}
+
+#biosimilar-kiosk #nav {
+  left: 32px;
+  width: 2128px;
+  height: calc(100% - 349px);
+}
+#biosimilar-kiosk .wheel {
+  background: url(../biosimilar/menu.png) no-repeat 0 0;
+}

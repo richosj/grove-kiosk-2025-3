@@ -40,8 +40,9 @@
   border-radius: 50%;
   background: url(#{$image-path}/celltrion/menu.png) no-repeat 0 0;
   touch-action: none;
-
 }
+
+
 
 .home-button {
   position: absolute;
@@ -97,4 +98,17 @@
   justify-content: center;
   align-items: center;
   pointer-events: auto;
+}
+
+
+#biosimilar-kiosk{
+  #nav{
+    left: 32px;
+    width: 2128px;
+    height: calc(100% - 349px);
+  }
+  .wheel{
+    background: url(#{$image-path}/biosimilar/menu.png) no-repeat 0 0;
+  }
+  
 }
