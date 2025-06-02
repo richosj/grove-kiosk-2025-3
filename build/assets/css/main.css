@@ -321,7 +321,6 @@ img {
   width: 1874px;
   height: 1874px;
   transform-origin: center;
-  touch-action: none;
   margin-top: 200px;
 }
 
@@ -331,7 +330,6 @@ img {
   height: 100%;
   border-radius: 50%;
   background: url(../celltrion/menu.png) no-repeat 0 0;
-  touch-action: none;
 }
 
 .home-button {
@@ -352,7 +350,6 @@ img {
   position: absolute;
   width: 272px;
   height: 280px;
-  cursor: pointer;
 }
 
 .menu-item-1 {
@@ -400,7 +397,6 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  pointer-events: auto;
 }
 
 #biosimilar-kiosk #nav {

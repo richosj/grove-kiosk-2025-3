@@ -75,11 +75,11 @@
 }
 .sticky-button .wrpas button {
   z-index: 2;
-  top: 273px;
+  top: 289px;
   height: 300px;
 }
 .sticky-button .nav-open {
-  background: url(../biosimilar/open.png) no-repeat 50% 50%;
+  background: url(../biosimilar/btn.png) no-repeat 50% 50%;
   transition: all 0.5s ease-in-out;
 }
 .sticky-button .nav-open.on {

@@ -83,10 +83,10 @@ $h : calc($height - $top - $bottom);
             //top: 0;left: 0;
         }
         a{z-index: 1;top: 0;height: 300px;}
-        button{z-index: 2;top: 273px;height: 300px;}
+        button{z-index: 2;top: 289px;height: 300px;}
     }
     .nav-open{
-        background: url(#{$image-path}/biosimilar/open.png) no-repeat 50% 50%;
+        background: url(#{$image-path}/biosimilar/btn.png) no-repeat 50% 50%;
         transition: all 0.5s ease-in-out;
         &.on{
             background-image: url(#{$image-path}/biosimilar/close.png);

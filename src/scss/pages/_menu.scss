@@ -29,7 +29,6 @@
   width: 1874px;
   height: 1874px;
   transform-origin: center;
-  touch-action: none;
   margin-top: 200px;
 }
 
@@ -39,7 +38,6 @@
   height: 100%;
   border-radius: 50%;
   background: url(#{$image-path}/celltrion/menu.png) no-repeat 0 0;
-  touch-action: none;
 }
 
 
@@ -64,7 +62,6 @@
   position: absolute;
   width: 272px;
   height: 280px;
-  cursor: pointer;
   //background-color: #000;
 }
 .menu-item-1{
@@ -97,7 +94,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  pointer-events: auto;
 }
 
 

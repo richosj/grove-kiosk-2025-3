@@ -7,7 +7,7 @@
     
     <title>CELLTRION</title>
     <link rel="stylesheet" href="assets/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="assets/css/celltrionStyle.css" />
+    <!-- <link rel="stylesheet" href="assets/css/celltrionStyle.css" /> -->
 </head>
 
 <body>
@@ -103,9 +103,9 @@
         </div>
     </div>
 
-    <script src="/js/celltrion.js" type="module"></script>
+    <script src="js/celltrion.js" type="module"></script>
 
-    <script src="/assets/swiper-bundle.min.js"></script>
+    <script src="assets/swiper-bundle.min.js"></script>
     <script>
         const navopen = document.querySelector('.nav-open');
         const nav = document.querySelector('.nav');
@@ -113,7 +113,7 @@
         const swiper = new Swiper('.swiper-container', {
             slidesPerView: 1,
             pagination: { el: '.swiper-pagination', clickable: true },
-            initialSlide: 0,
+            //initialSlide: 0,
             on: {
                 init() {
                     updatePageActive()
