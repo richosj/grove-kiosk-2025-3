@@ -148,7 +148,17 @@ $h : calc($height - $top - $bottom);
         bottom: 90px;
         left: 125px;
         color: #848889;
-        font-size: 14px;
+        font-size: 21px;
+        line-height: 1.3;
+        .bolds{
+            color: #000;
+            font-size:30px;
+            line-height: 1.23;
+            margin-bottom: 20px;
+        }
+        &:has(.bolds){
+            font-size: 20px;
+        }
     }
 
     .page1{
@@ -308,7 +318,7 @@ $h : calc($height - $top - $bottom);
             position: relative;
             opacity: 0;
             transform: translateY(-100px);
-            animation: stackItems 1.5s forwards;
+            //animation: stackItems 1.5s forwards;
         }
         .item2{
             position: relative;
@@ -459,34 +469,34 @@ $h : calc($height - $top - $bottom);
 
     .page7{
         &.active{
-            .item5{
-                .h{
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-            .item4{
-                .h{
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
+            // .item5{
+            //     .h{
+            //         opacity: 1;
+            //         transform: translateY(0);
+            //     }
+            // }
+            // .item4{
+            //     .h{
+            //         opacity: 1;
+            //         transform: translateY(0);
+            //     }
+            // }
         }
 
-        .h1{
-            transition-delay: 0.3s;
-        }
-        .h2{
-            transition-delay: 0.8s;
-        }
-        .h3{
-            transition-delay: 1.3s;
-        }
-        .h4,
-        .h5,
-        .h6{
-            transition-delay: 1.8s;
-        }
+        // .h1{
+        //     transition-delay: 0.3s;
+        // }
+        // .h2{
+        //     transition-delay: 0.8s;
+        // }
+        // .h3{
+        //     transition-delay: 1.3s;
+        // }
+        // .h4,
+        // .h5,
+        // .h6{
+        //     transition-delay: 1.8s;
+        // }
         
         .item2{
             position: relative;
@@ -501,9 +511,9 @@ $h : calc($height - $top - $bottom);
             .h {
                 position: absolute;
                 top: 75px;
-                opacity: 0;
-                transform: translateY(110px);
-                transition-duration: 1.3s;
+                opacity: 1;
+                //transform: translateY(110px);
+                // /transition-duration: 1.3s;
             }
             .h1{left: 1008px;}
             .h2{left: 1161px;}
@@ -511,6 +521,13 @@ $h : calc($height - $top - $bottom);
             .h4{left: 1465px;}
             .h5{left: 1618px;}
             .h6{left: 1770px;}
+            .an-count{
+                position: absolute;
+                left: 1075px;
+                top: 491px;
+                animation: linear click_ani_03 2s infinite;
+                transform-origin: center center;
+            }
         }
         .item4 {
             position: relative;
@@ -518,11 +535,11 @@ $h : calc($height - $top - $bottom);
             .h2{left: 550px;}
             .h3{left: 680px;}
             .h {
-                transform: translateY(110px);
+                //transform: translateY(110px);
                 position: absolute;
                 top: 209px;
-                opacity: 0;
-                transition-duration: 1.3s;
+                //opacity: 0;
+                //transition-duration: 1.3s;
             }
         }
 
@@ -530,6 +547,7 @@ $h : calc($height - $top - $bottom);
             position: absolute;
             top: 780px;
             left: 680px;
+            z-index: 2;
             > div{
                 position: relative;
             }
@@ -769,19 +787,22 @@ $h : calc($height - $top - $bottom);
                 clip-path: inset(100% 0 0 0);
                 transition: clip-path 1s ease-out 1.5s;
             }
+            .oh-h2{
+                transition: clip-path 1.5s ease-out 2.5s;
+            }
             .line{
                 position: absolute;
                 left: 100px;
                 top: 85px;
                 opacity: 0;
-                transition: opacity 1s ease-out 2.3s;
+                transition: opacity 1s ease-out 3s;
             }
             .count{
                 position: absolute;
                 left: 830px;
                 top: 125px;
                 opacity: 0;
-                transition: opacity 1s ease-out 2.7s;
+                transition: opacity 1s ease-out 3s;
             }
         }
     }
